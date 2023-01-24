@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const User = require("../models/user.model");
+const Authentication = require("../middlewares/authentication.middleware");
 
 const newToken = (user) => jwt.sign({ user }, process.env.screat_key);
 
