@@ -41,4 +41,14 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/getProfile", Authentication, async (req, res) => {
+  try {
+    const id = req.user._id;
+    const user = await User.findById(id).lean().exec();
+    res.status(200).send(user);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
+
 module.exports = router;
